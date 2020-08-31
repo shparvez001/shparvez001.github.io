@@ -40,18 +40,19 @@
 	<ul class="navbar-nav" id="nav">
 		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/">About Me</a></li>
 		Projects
-		<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+		<span id="project-links"></span>
 	</ul>
 	</div>
 </div>
 </nav>
-
+<!-- 
 <div class="container-fluid p-0">
 
-<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
-<div class="my-auto">
+
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects" hidden>
+<div class="my-auto" hidden>
 <h2 class="mb-5">Projects Completed</h2>
-<!--     <ol class="fa-ul mb-0"> -->
+
 
 <ol>
 	<li>Analysis and Implementation of Ćuk Topology Based Improved Power Quality Single Phase AC to DC Converter [Thesis topic]</li>
@@ -75,38 +76,207 @@
 </ol>
 </div>
 </section>
+-->
 
+<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="project" >
+<div class="my-auto">
+<h2 class="mb-5" id="projectName"> </h2>
 
-<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="contact">
-	<div class="my-auto">
-	<h2 class="mb-5">Contact Me</h2>
-	<!--     <ol class="fa-ul mb-0"> -->
+<div id="projectDetails">
 
-		<div class="container-fluid bg-grey" id="contact">
-			<div class="row">
-				<div class="col-sm-5">
-				<p>Contact Me to get any information</p>
+</div>
 
-				<p>Sylhet, Bangladesh</p>
-
-				<p>+880 1723807161</p>
-
-				<p>shparvez001@gmail.com</p>
-				</div>
-
-				<div class="col-sm-7 slideanim">
-				<div class="row"><iframe allowfullscreen="" frameborder="0" height="300" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6039.698394361511!2d91.873830600954!3d24.89827770544915!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1488636998333" style="border:0" width="100%"></iframe></div>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
 </section>
+
+
 </div>
 <!-- Bootstrap core JavaScript --><script src="shpnew/vendor/jquery/jquery.min.js"></script><script src="shpnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><!-- Plugin JavaScript --><script src="shpnew/vendor/jquery-easing/jquery.easing.min.js"></script><!-- Custom scripts for this template --><script src="shpnew/js/resume.min.js"></script>
 <script>
-	var projects=["Saab", "Volvo", "BMW"];
+	var listedProjects=[
+	['weather', 'Weather Station'],
+    ['biom', "Remote Health Monitoring"],
+    ['fire-fighting-system', "Fire FIghting System"],
+    ['submarine-bot', "Submarine Bot"],
+    ['lifi', "Optical Communication"],
+    ['temp-logger', "Temperature logger"],
+    ['rcr-car', "Remote control Robotic Car"],
+    ['home-automation', "Home Automation"],
+    ['anemometer', "Anemometer"],
+    ['energy-meter', "Energy Meter"],
+    ['ic-tester', "Digital IC tester"],
+    ['pov-display', "POV Display"]
+	];
+	
+	var i=0;
+	for (i=listedProjects.length-1;i>=0;i--)
+	{
+		//console.log(i);
+		document.getElementById("project-links").outerHTML+="<li class=\"nav-item\"><a class=\"nav-link js-scroll-trigger\" href=\"#"+listedProjects[i][0]+"\" onclick=\"loadProjectDetails('"+listedProjects[i][0]+"')\">"+listedProjects[i][1]+" </a></li>";
+	}
+	//		<li class=\"nav-item\"><a class=\"nav-link js-scroll-trigger\" href=\"#about\">About</a></li>
+	var projects=[
+    ['weather', 'Implementation of portable electronic mini weather station'],
+    ['cuk', "Analysis and Implementation of Ćuk Topology Based Improved Power Quality Single Phase AC to DC Converter"],
+    ['biom', "Biomedical Data Acquisition, Storage and Delivery System for Remote Health Monitoring"],
+    ['fire-fighting-system', "Micro-controller based fire alarm system with extinguisher"],
+    ['submarine-bot', "Implementation of submarine robot for underwater navigation and communication"],
+    ['lifi', "Low cost data transmission system via LED lighting with over 50 Bps speed"],
+    ['temp-logger', "Temperature logger for Biomedical Use"],
+    ['rcr-car', "Remote control Robotic Car"],
+    ['home-automation', "Design and implementation of home automation system"],
+    ['dtmf-car', "Cell phone controlled mini car"],
+    ['anemometer', "Anemometer"],
+    ['energy-meter', "Implementing Voltmeter, Ammeter and Watt-meter using micro-controller"],
+    ['ic-tester', "Digital IC tester"],
+    ['stapwatch', "Micro-controller based clock with stopwatch and timer"],
+    ['pov-display', "Micro-controller based rotating POV Display"],
+    ['xfr', "Single Phase 150 VA transformer"],
+    ['inductive-load', "Construction of a three-phase inductive load"],
+    ['garments-floor-plan', "Designing of electrical service system of a garments floor"]
+];
+
+//project details
+projectDetails= [
+    {
+	  "code":"weather",
+      "title": "Implementation of portable electronic mini weather station",
+      "link": "http://shparvez.net/projects/weather-station/",
+      "description": "",
+      "encoded":  "I was part of the implementation of portable electronic mini weather station was a research project funded by the University Research Center, Shahjalal University of Science and Technology, Sylhet, Bangladesh. In this project a number of weather variables were measured and logged. All the weather variables measured were sent to a server using GSM network where the data could be accessed by any user.<br>The weather variables measured were\n<ul>\n \t<li>Temperature</li>\n \t<li>Humidity</li>\n \t<li>Rainfall [Total rainfall in a day + If it is raining at a particular time or not]</li>\n \t<li>Wind speed</li>\n \t<li>Atmospheric pressure</li>\n \t<li>UV index</li>\n \t<li>Dust density</li>\n \t<li>Ambient light intensity</li>\n \t<li>Different Gas sensing</li>\n</ul>\nI was developed the Wind speed, Atmospheric pressure, UV index, Dust density, Ambient light intensity and Different Gas sensing portion. Additionally I was involved in the system integration of the full system and sending the data to a remote server via GSM network and designing the  website for serving the end user with weather information.<br>&nbsp;<br>[wptab name='Pictures']\n<h1></h1>\n[gallery type=\"slideshow\" ids=\"252,251,250\"]<br>[/wptab]<br>[wptab name='Videos']<br>[embed]https://www.youtube.com/watch?v=7FD9gLL8Yh4[/embed]<br>[embed]https://www.youtube.com/watch?v=9QimiC-Ekss[/embed]<br>[/wptab]<br>[wptab name='Publication']\n<h1>Journal Paper</h1>\n<ol>\n \t<li><strong>S. H. Parvez</strong>, J. K. Saha, M. J. Hossain, H. Hussain, Md. M. A. Ghuri, T. A. Chowdhury, Md. M. Rahman, N. Z. Shuchi, A. Islam, M. Hasan and B. Paul, “A Novel Design and Implementation of Electronic Weather Station and Weather Data Transmission System Using GSM Network”,WSEAS TRANSACTIONS ON CIRCUITS AND SYSTEMS, 2016\n<a href=\"https://www.researchgate.net/publication/298344488_A_Novel_Design_and_Implementation_of_Electronic_Weather_Station_and_Weather_Data_Transmission_System_Using_GSM_Network\" target=\"_blank\">PDF</a></li>\n</ol>\n<h1>Conference Paper</h1>\n<ol>\n \t<li><strong>S. H. Parvez</strong>, J. K. Saha, M. J. Hossain, H. Hussain, Md. M. A. Ghuri, T. A. Chowdhury, Md. M. Rahman, N. Z. Shuchi, A. Islam, M. Hasan and B. Paul, “Design and Implementation of a Effective, Portable and Scalable Electronic Weather Station”, proc. 14<sup>th</sup> WSEAS Int. Conf. on Instrumentation, Measurement, Circuits and Systems (IMCAS ’15), University of Salerno, Salerno, Italy, June, 2015.\n<a href=\"https://www.researchgate.net/publication/280976055_Design_and_Implementation_of_a_Effective_Portable_and_Scalable_Electronic_Weather_Station?ev=prf_pub\" target=\"_blank\">PDF</a></li>\n</ol>\n[/wptab]<br>[wptab name='The future']<br>A larger scale implementation was part of our long term goal but due to lack of funding further work is halted. If you want to fund the further implementation of the project kindly contact me from the contact page in this website.<br>[/wptab]<br>[end_wptabset]"
+    },
+    {
+	  "code":"fire-fighting-system",
+      "title": "Micro-controller based fire alarm system with extinguisher",
+      "link": "http://shparvez.net/projects/fire-fighting-system/",
+      "description": "",
+      "encoded": "I was part of the implementation of Micro-controller based fire alarm system with extinguisher was a research project funded by the University Research Center, Shahjalal University of Science and Technology, Sylhet, Bangladesh. This project was designed to combat fire in any office environment. It incorporated fire detection and extinguisher in one module. The main goal was to make the system cost effective. Fire was detected using both heat and smoke detection. After a fire is detected the system is able to automatically turn on a fire extinguisher so that the fire will not able to damage an office space.<br>I was involved in the fire detection via heat and integration of the project. For this project PIC micro-controller was used<br>&nbsp;<br>[gallery type=\"slideshow\" ids=\"261,302\"]<br>&nbsp;<br>&nbsp;"
+    },
+    {
+	  "code":"lifi",
+      "title": "Low cost data transmission system via LED lighting with over 50 Bps speed",
+      "link": "http://shparvez.net/projects/small-scale-lifi/",
+      "description": "",
+      "encoded": "Low cost data transmission system via LED lighting with over 50 Bps speed was a small collaboration project with my friend <a href=\"http://tahmidhassan.com\">Tahmid</a>. In this project we tried to implement a communication system with light as medium. LED panels were used as light source and the panel was modulated. The frequency of modulation was chosen such that for naked eye the panel will seem to be constantly on. So communication can be done in parallel with the lights serving their purpose of lighting an area.<br>The data transfer is done between two nodes: a transmitter and a receiver. For transmission large LED panel light was used, which was driven using mosfet with adequate power handling capability. For transmission the LED panel was modulated using Pulse Width Modulation technique. For bit 1 a duty cycle and for bit 0 a different duty cycle was used and in both the case the frequency remained same. To make the LED panel more useful the LED panel was kept on the whole time, so for data transmission the waveform used was slightly aberrant. The wave started with initially being low and then going high . To speed up the data transmission the panel was modulated for one complete cycle only. And on the receiving side PIN photodiode was used in reverse biased stage. The current was allowed to flow through a resistor which allowed for a voltage drop to be measured. The PIN diode used in the project was BPW34. The BPW34 is a very high speed and highly sensitive PIN photodiode in a small flat plastic package. Its top view construction makes it ideal as a low cost replacement of TO-5 devices in a lot of applications. Because of its water-clear epoxy the device is sensitive to visible and infrared radiation. The large active area gives the photo detector a high sensitivity at a wide viewing angle. This is ideal as a receiver because it has a rise time and a fall time of 100 ns each which is good enough for detecting high frequency light pulses making it a perfect candidate to be used as a receiver.<br>[wptab name='Pictures']<br>[caption id=\"attachment_270\" align=\"alignnone\" width=\"960\"]<img class=\"wp-image-270 size-full\" src=\"http://shparvez.net/wp-content/uploads/2017/04/lifi.jpg\" alt=\"lifi\" width=\"960\" height=\"720\" /> Prototype of the system[/caption]<br>[/wptab]<br>[wptab name='Videos']<br>Video coming soon....<br>[/wptab]<br>[wptab name='Publication']\n<h1>Conference Paper</h1>\n<ol>\n \t<li>T.H. Talukdar, <strong>S. H. Parvez</strong>, “Small Scale Data Transmission via Light Using Light Source,” in International Conference on Engineering, Research, Innovation and Education, Sylhet, Bangladesh, Jan 2017. <a class=\"pdflinks\" href=\"https://www.researchgate.net/publication/312332806_Small_Scale_Wireless_Data_Transmission_via_Light_Using_Light_Source\" target=\"_blank\"><strong>PDF</strong></a></li>\n</ol>\n[/wptab]<br>[end_wptabset]"
+    },
+    {
+	  "code":"rcr-car",
+      "title": "Remote control Robotic Car [The pioneer]",
+      "link": "http://shparvez.net/projects/rcr-car/",
+      "description": "",
+      "encoded": "The name for this project \"The pioneer\" is justified because it is literally the first micro-controller based project in our university.<br>It was early 2012 . The story of the project started when we were 2nd year EEE student at SUST and an invitation of a project competition came to our teacher in the department and he wanted us the second year student to participate in the competition. At that time we never heard of the thing called micro-controller. Although micro-controller is a common thing worldwide it was not so common in Bangladesh or at least Sylhet. Due to inspiration of our teacher, Mr. <a href=\"http://www.msahadat.com/\">Nazmus Sahadat</a> , we [Me along with <a href=\"http://www.tahmidhassan.com\">Tahmid</a> and Jitu] formed a group and started learning micro-controller to do the 'job'. And it was a daunting task for us because we did not had the likes of arduino in hand and we had to learn AVR. The project would not be able to complete if  our teacher Mr. <a href=\"http://www.msahadat.com/\">Nazmus Sahadat</a> had not helped us with learning and every bit of the project.<br>&nbsp;<br>[wptab name='Pictures']<br>[gallery type=\"slideshow\" ids=\"278,277,279,280,290\"]<br>[/wptab]<br>[wptab name='Videos']<br>https://www.youtube.com/watch?v=GCdgxC3aXqM<br>[/wptab]<br>&nbsp;<br>[end_wptabset]"
+    },
+    {
+	  "code":"temp-logger",
+      "title": "Temperature logger for Biomedical Use",
+      "link": "http://shparvez.net/projects/temp-logger/",
+      "description": "",
+      "encoded":  "&nbsp;<br>[caption id=\"attachment_293\" align=\"alignnone\" width=\"800\"]<img class=\"wp-image-293 size-full\" src=\"http://shparvez.net/wp-content/uploads/2017/04/temp_sensor.jpg\" alt=\"temp_sensor\" width=\"800\" height=\"602\" /> Temperature Logger for biomedical use prototype[/caption]<br>&nbsp;<br>&nbsp;"
+    },
+    {
+	  "code":"pov-display",
+      "title": "Microcontroller based rotating POV display",
+      "link": "http://shparvez.net/projects/pov-display/",
+      "description": "",
+      "encoded":  "<span style=\"line-height: 1.5em;\">This is a project where me and my friend</span><a style=\"line-height: 1.5em;\" title=\"Xitu\" href=\"https://www.facebook.com/J4jitu\"> Jitu</a><span style=\"line-height: 1.5em;\"> tried to make a rotating display. Here is the final output of the display</span><br>https://www.youtube.com/watch?v=uIR5XUyJL-Y<br>Any one interested to Hack it up can see this pdf<br><a href=\"http://dl.shparvez.net/Electronics_Project/Codes/rotating_display/Rotating-display-Making-code.pdf\"><span style=\"color: #333333; line-height: 1.5em;\">[gview file=\"http://dl.shparvez.net/Electronics_Project/Codes/rotating_display/Rotating-display-Making-code.pdf\"]</span></a><br>Or See my Instructables <a title=\"Rotating display\" href=\"http://www.instructables.com/id/Rotating-display-Making-code/\">here</a><br>Get a full functional Code from here <a href=\"http://dl.shparvez.net/Electronics_Project/Codes/rotating_display/Rotating_Display_code.c\">http://dl.shparvez.net/Electronics_Project/Codes/rotating_display/Rotating_Display_code.c</a><br>&nbsp;<br>If you try out this project, you can share you experience in the comment or directly to my email.<br>[caption id=\"attachment_300\" align=\"alignnone\" width=\"1024\"]<a href=\"http://shparvez.net/electronics-projects/pov-display/28-sdc10259/\"><img class=\"wp-image-300 size-large\" src=\"http://shparvez.net/wp-content/uploads/2017/04/28-SDC10259-1024x934.jpg\" alt=\"\" width=\"1024\" height=\"934\" /></a> The setup[/caption]<br>&nbsp;"
+    },
+    {
+	  "code":"submarine-bot",
+      "title": "Implementation of submarine robot for underwater navigation and communication",
+      "link": "http://shparvez.net/projects/submarine/",
+      "description": "",
+      "encoded": "A unconventional submarine robot was built using PVC, Water Pumps and Brushless DC Motors. The shape was unconventional, so it made way for electronics and batteries to be put in the middle. Communication was done via SONAR via Arduino. RF does not work underwater so it could not be used.<br>[gallery type=\"slideshow\" ids=\"316,317\"]"
+    },
+    {
+	  "code":"anemometer",
+      "title": "Anemometer",
+      "link": "http://shparvez.net/projects/anemometer/",
+      "description": "",
+      "encoded": "The goal of the project was to implement a very low cost anemometer to measure speed of wind. There were many prototypes made to check for some proof of concept. Ultimately this design was chosen.<br><a href=\"http://shparvez.net/projects/anemometer/wp_20150526_003/\" rel=\"attachment wp-att-332\"><img class=\"aligncenter wp-image-332 size-medium\" src=\"http://shparvez.net/wp-content/uploads/2017/04/WP_20150526_003-300x169.jpg\" alt=\"\" width=\"300\" height=\"169\" /></a><br>For this project AVR was used. The project required use of external interrupt for a reliable rotation measurement.<br>[gallery type=\"slideshow\" ids=\"325,326,327,328,329\"]<br>The video shows testing of the  chosen design.<br><iframe width=\"100%\" height=\"653\" src=\"https://www.youtube.com/embed/juRvL7aIvII\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe> <br> The video shows an usable setup of anemometer made. <br> <iframe width=\"100%\" height=\"500\" src=\"https://www.youtube.com/embed/xJ33CYBJf60\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+    },
+    {
+	  "code":"ic-tester",
+      "title": "Digital IC tester",
+      "link": "http://shparvez.net/projects/digital-ic-tester/",
+      "description": "",
+      "encoded": "The goal of the project was to implement a system to check some of the common 7400 series ICs specially all the gates."
+    }
+  ];
+
+loadProjectDetails_start();
+
+function loadProjectDetails_start()
+{
 	var project=window.location.hash;
-	console.log(project);
+	project=project.slice(1, project.length);
+	project=project.toLowerCase();
+	//console.log(project);
+	document.getElementById("projectName").innerHTML=projectName(project);
+	let projectDetail = projectDetails.find(projectDetail => projectDetail.code === project);
+	console.log(projectDetail);
+	if(projectDetail)
+	{
+		document.getElementById("projectDetails").innerHTML=projectDetail.encoded;
+	}
+	else
+	{
+		document.getElementById("projectDetails").innerHTML="NO DETAILS AVAILABLE";
+	}
+}
+
+function loadProjectDetails(project)
+{
+	project=project.toLowerCase();
+	//console.log(project);
+	document.getElementById("projectName").innerHTML=projectName(project);
+	let projectDetail = projectDetails.find(projectDetail => projectDetail.code === project);
+	console.log(projectDetail);
+	if(projectDetail)
+	{
+		document.getElementById("projectDetails").innerHTML=projectDetail.encoded;
+	}
+	else
+	{
+		document.getElementById("projectDetails").innerHTML="NO DETAILS AVAILABLE";
+	}
+}
+
+
+function projectName(projectCode)
+{
+	var x;
+	for(x of projects)
+	{
+		if(x.indexOf(projectCode)>-1)
+		{
+			return x[1];
+		}
+		
+	}
+}
+
+//multi dimensional array search
+
+//A basic 2d search
+
+function arraySearch2D(arrayName,searchTerm)
+{
+		var i=0;
+		for(i=0;i<arrayName.length;i++)
+		{
+			var insideArray=arrayName[i];
+			if (insideArray.indexOf(searchTerm)>-1)
+			{
+				//return arrayName[i][insideArray.indexOf(searchTerm)];
+				return i+','+insideArray.indexOf(searchTerm);
+			}
+		}
+}
+//eg: arraySearch2D(projects,"weather")
+
+
+
+
 
 
 </script>

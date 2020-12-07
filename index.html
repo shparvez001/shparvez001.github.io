@@ -16,13 +16,43 @@
 	<link href="https://i0.wp.com/shparvez.net/wp-content/uploads/2015/01/test.gif?fit=104%2C103" rel="icon" sizes="192x192" />
 	<link href="https://i0.wp.com/shparvez.net/wp-content/uploads/2015/01/test.gif?fit=104%2C103" rel="apple-touch-icon-precomposed" />
 	<style type="text/css">
+/* For iframe  */
+.container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}	
+
+
+.navv {
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+  overflow-y: scroll; /* Add the ability to scroll */
+}
+ /* Hide scrollbar for Chrome, Safari and Opera */
+.navv::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.navv {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+} 		
 	</style>
 </head>
 <body id="page-top">
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top" id="sideNav">
 <!-- <div style="overflow: auto; height:100%;"><a class="navbar-brand js-scroll-trigger" href="#page-top"><span class="d-block d-md-none"><img alt="" class="img-lol img-profile rounded-circle mx-auto mb-2" src="shpnew/img/profile_480.jpg" /> </span> <span class="d-none d-md-block"> <img alt="" class="img-fluid img-profile rounded-circle mx-auto mb-2" src="shpnew/img/profile_480.jpg" /> </span> </a><button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"></button>
 -->
-  <div style="overflow: auto; height:100%;">
+  <div class="navv" style="overflow: auto; height:100%;">
 	<a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-block d-md-none">
 		<img class="img-lol img-profile rounded-circle mx-auto mb-2" src="shpnew/img/profile_480.jpg" alt="">

@@ -51,7 +51,7 @@ function insertGallery(containerName,galleryName,galleryBaseLink,galleryImages)
 			galleryContent+='<div class="column">';	
 		}
 		galleryContent+='<img src="'+galleryBaseLink+galleryImages[i]["name"]+'" onclick="openModal();currentSlide('+j+')" class="hover-shadow">';	
-		modalContent+='<div class="mySlides" title="'+galleryImages[i]["caption"]+'" ><div class="numbertext">'+j+' / '+galleryImages.length+'</div><img src="'+galleryBaseLink+galleryImages[i]["name"]+'" alt="'+galleryImages[i]["caption"]+'" style="width:100%" onclick="plusSlides(1)"></div>';
+		modalContent+='<div class="mySlides" title="'+galleryImages[i]["caption"]+'" ><div class="numbertext">'+j+' / '+galleryImages.length+'</div><img class="slide-image" src="'+galleryBaseLink+galleryImages[i]["name"]+'" alt="'+galleryImages[i]["caption"]+'" style="width:100%" onclick="plusSlides(1)"></div>';
 	}
 	galleryContent+='</div>';
 	modalContent+='<a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a><div class="caption-container"><p id="caption"></p></div></div></div>';

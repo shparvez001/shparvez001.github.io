@@ -31,7 +31,7 @@
 
 
 /* For responsive image gallery */
-
+/* Help from: https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp */
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -67,6 +67,7 @@
   }
 }
 
+/* Help from: https://www.w3schools.com/howto/howto_js_lightbox.asp */
 /* The Modal (background) */
 .modal {
   display: none;

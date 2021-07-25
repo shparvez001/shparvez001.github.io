@@ -92,6 +92,18 @@
   max-width: 1200px;
 }
 
+.modal-content-mobile {
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  max-width: 1200px;
+}
+
 /* The Close Button */
 .close {
   color: yellow;

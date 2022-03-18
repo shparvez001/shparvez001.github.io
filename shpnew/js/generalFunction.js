@@ -64,7 +64,7 @@ function insertGallery(containerName,galleryName,galleryBaseLink,galleryImages)
 	var all = document.getElementsByClassName('modal-content');
 	for (var i = 0; i < all.length; i++) {
 		//console.log(all[i]);
-		all[i].className="modal-content-mobile"
+		all[i].className="modal-content-mobile";
 	}
 	}
 		

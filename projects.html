@@ -124,10 +124,11 @@
     ['lifi', "Optical Communication"],
     ['temp-logger', "Temperature logger"],
     ['rcr-car', "Remote control Robotic Car"],
-    //['home-automation', "Home Automation"],
+    ['dtmf-car', "DTMF based Car"],
+    ['home-automation', "Home Automation"],
     ['anemometer', "Anemometer"],
     //['energy-meter', "Energy Meter"],
-    //['ic-tester', "Digital IC tester"],
+    ['ic-tester', "Digital IC tester"],
     ['pov-display', "POV Display"]
 	];
 	
@@ -154,7 +155,7 @@
     ['anemometer', "Anemometer"],
     ['energy-meter', "Implementing Voltmeter, Ammeter and Watt-meter using micro-controller"],
     ['ic-tester', "Digital IC tester"],
-    ['stapwatch', "Micro-controller based clock with stopwatch and timer"],
+    ['stopwatch', "Micro-controller based clock with stopwatch and timer"],
     ['pov-display', "Micro-controller based rotating POV Display"],
     ['xfr', "Single Phase 150 VA transformer"],
     ['inductive-load', "Construction of a three-phase inductive load"],
@@ -294,10 +295,29 @@ projectDetails= [
       "title": "Digital IC tester",
       "link": "http://shahadatparvez.com/projects#ic-tester",
       "description": "",
-      "encoded": "The goal of the project was to implement a system to check some of the common 7400 series ICs specially all the gates.",
+      "encoded": "This project is an <strong>Arduino-based logic gate IC tester</strong> designed to automatically identify and verify common <strong>7400-series logic ICs</strong> — specifically the full set of two-input gates: AND, OR, XOR, NAND, NOR, and XNOR.<br><br>The tester works by applying a sequence of known logic levels to the IC under test via two output pins, then reading the resulting output and comparing it against the expected truth table for each gate type. By systematically stepping through all four input combinations (00, 01, 10, 11) and observing the responses, the firmware narrows down the gate type through a decision-tree approach — no manual selection required.<br><br>Once the IC is identified, the result is displayed on a <strong>16×2 LCD screen</strong>, showing the detected gate type clearly. The entire identification process runs automatically in a continuous loop, making it quick to test multiple ICs in succession.<br><br>The project provides a practical and low-cost alternative to benchtop logic analysers for verifying discrete gate ICs — useful for debugging, salvaging components from old boards, or confirming correct IC insertion during prototyping.<br><br><div id=\"img-gallery\"></div>",
 	  "galleryImages":[
 	  ]
+    },
+    {//DONE
+	  "code":"home-automation",
+      "title": "Home Automation",
+      "link": "http://shahadatparvez.com/projects#home-automation",
+      "description": "",
+      "encoded": "This project involved the design and implementation of a <strong>microcontroller-based home automation system</strong> built around the <strong>ATmega328P</strong>, integrating multiple smart control subsystems into a unified embedded platform.<br><br>The system combines a <strong>PIR motion sensor</strong> for presence detection, two independent <strong>relay-controlled output channels</strong> (SW1 and SW2) for switching mains-connected devices such as lights or appliances, and a <strong>DS1307 real-time clock (RTC)</strong> module for time-aware automation — enabling scheduled control of devices based on time of day. A <strong>16×2 LCD display</strong> (LM016L) provides a local user interface for real-time status feedback, and the system runs on a regulated supply with a 3V battery backup for the RTC to retain time during power outages.<br><br>The motion sensor triggers the relay outputs automatically when presence is detected, forming the basis of an <strong>occupancy-based lighting control</strong> system — turning lights on when a room is occupied and off after a set idle period. The dual relay design allows independent control of two separate circuits, making it flexible for a range of automation scenarios beyond just lighting.<br><br>This was one of several home automation projects developed, including a <strong>standalone motion-activated light controller</strong> and an <strong>automatic doorbell system</strong>, as well as more complex multi-subsystem builds like this one that combine sensing, switching, scheduling, and display into a single cohesive unit. Across these projects, the focus was consistently on practical, reliable design that could be deployed in a real home environment.<br><br><div id=\"img-gallery\"></div>",
+	  "galleryImages":[
+	  ]
+    },
+	{//DONE
+	  "code":"dtmf-car",
+      "title": "Cell Phone Controlled Mini Car",
+      "link": "http://shahadatparvez.com/projects#cell-phone-car",
+      "description": "",
+      "encoded": "This project involved the design and implementation of a <strong>cell phone controlled mini car</strong> using <strong>DTMF (Dual-Tone Multi-Frequency)</strong> technology — the same signalling standard used by telephone keypads — to wirelessly control the vehicle's movement over a standard phone call.<br><br>The system works by establishing a phone call between a controller handset and a mobile phone mounted on the car. When a key is pressed on the controller's keypad, the corresponding DTMF tone is transmitted over the call and decoded in real time by a <strong>DTMF decoder IC</strong> on the receiver end. The decoded signal is then interpreted by a microcontroller, which drives the motor driver circuit to move the car in the corresponding direction — forward, backward, left, or right.<br><br>One of the key advantages of this approach is its <strong>unlimited control range</strong> — since the command signal travels over the cellular network rather than a dedicated RF link, the car can in principle be controlled from anywhere in the world as long as both phones have network coverage. This makes it fundamentally different from conventional IR or RF remote-controlled vehicles which are limited to line-of-sight or short range.<br><br>The hardware consisted of a motor driver for the DC drive motors, a DTMF decoder module, a microcontroller for interpreting decoded signals, and a chassis with wheels. The project demonstrated a creative and practical application of existing telecommunications infrastructure for real-time remote control.<br><br><div id=\"img-gallery\"></div>","galleryImages":[
+	  ]
     }
+
+	
   ];
 //example of video. Just replace the youtube video id
 //<div class=\"container\"><iframe  src=\"https://www.youtube.com/embed/juRvL7aIvII\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen class=\"video\"></iframe></div>

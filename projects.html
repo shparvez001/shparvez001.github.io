@@ -129,7 +129,11 @@
     ['anemometer', "Anemometer"],
     ['energy-meter', "Energy Meter"],
     ['ic-tester', "Digital IC tester"],
-    ['pov-display', "POV Display"]
+    ['digital-clock', "Digital Clock"],
+    ['pov-display', "POV Display"],
+	['xfr', "Transformer"],
+	['inductive-load', "Inductive Load"],
+	['garments-floor-plan', "Electrical Service Design"]
 	];
 	
 	var i=0;
@@ -155,7 +159,7 @@
     ['anemometer', "Anemometer"],
     ['energy-meter', "Implementing Voltmeter, Ammeter and Watt-meter using micro-controller"],
     ['ic-tester', "Digital IC tester"],
-    ['stopwatch', "Micro-controller based clock with stopwatch and timer"],
+    ['digital-clock', "Micro-controller based clock with stopwatch and timer"],
     ['pov-display', "Micro-controller based rotating POV Display"],
     ['xfr', "Single Phase 150 VA transformer"],
     ['inductive-load', "Construction of a three-phase inductive load"],
@@ -325,7 +329,45 @@ projectDetails= [
       "encoded": "This project involved the design and implementation of a <strong>microcontroller-based multi-function electrical measurement system</strong> capable of simultaneously functioning as a <strong>Voltmeter, Ammeter, and Wattmeter</strong> — three of the most fundamental instruments in electrical engineering — in a single compact device.<br><br>The system measures <strong>AC/DC voltage</strong> and <strong>current</strong> in real time using appropriate signal conditioning circuits. Voltage sensing is achieved through a precision voltage divider network that scales the input voltage down to the ADC-safe range of the microcontroller, while current sensing is implemented using a shunt resistor or current transformer depending on the magnitude of the current being measured. The microcontroller's built-in ADC samples these conditioned signals continuously.<br><br>For the <strong>Wattmeter</strong> functionality, instantaneous power is computed by multiplying the sampled voltage and current values at each time step — reflecting the fundamental definition of electrical power (P = V × I). For AC measurements, the system calculates <strong>true RMS voltage and current</strong> and derives <strong>real power, apparent power, and power factor</strong>, giving a complete picture of the load's electrical behaviour.<br><br>All measured values are displayed in real time on an <strong>LCD screen</strong>, clearly labelled with units (V, A, W) for straightforward readability. The device is calibrated against known reference values to ensure measurement accuracy across its operating range.<br><br>Beyond being a practical bench instrument, this project served as a strong exercise in <strong>analog signal conditioning, ADC interfacing, fixed-point arithmetic for embedded systems, and real-time display management</strong> — skills that underpin a wide range of embedded measurement applications.<br><br>This work also fed directly into a separate but related <strong>smart metering project</strong>, where the goal was to retrofit intelligence onto traditional digital electricity meters without any hardware modification to the meter itself. This was achieved by mounting an <strong>external light sensor</strong> on the meter's pulse LED — a standard feature on most digital energy meters that blinks at a fixed rate proportional to energy consumption. By counting these optical pulses, the system could accurately calculate real-time energy usage. This data was then transmitted to a remote <strong>server over a network connection</strong>, enabling automated smart billing without requiring meter replacement — a cost-effective and non-invasive approach to modernising legacy metering infrastructure.<br><br><div id=\"img-gallery\"></div>",
 	  "galleryImages":[
 	  ]
+    },
+	{//DONE
+	  "code":"digital-clock",
+      "title": "Micro-controller based clock with stopwatch and timer",
+      "link": "http://shahadatparvez.com/projects#digital-clock",
+      "description": "",
+      "encoded": "This project involved the design and implementation of a <strong>microcontroller-based digital clock</strong> with integrated <strong>stopwatch and countdown timer</strong> functionality — combining three time-keeping modes into a single embedded system. Over time, this evolved into multiple versions with different display technologies and connectivity features.<br><br>At its core, the system uses a microcontroller to maintain accurate timekeeping, either by leveraging an external <strong>Real-Time Clock (RTC) module</strong> (such as the DS1307) for battery-backed time retention, or using the microcontroller's internal timer interrupts to count elapsed time with high precision. Several display variants were built across different iterations — including <strong>seven-segment displays, 16×2 LCD screens, and compact OLED panels</strong> — each offering a different balance of readability, power consumption, and form factor.<br><br>The <strong>stopwatch mode</strong> allows the user to measure elapsed time with start, stop, and reset controls — useful for timing events with precision down to milliseconds. The system captures the start time on button press and continuously updates the display with the elapsed duration, maintaining accuracy through interrupt-driven timing rather than polling, which avoids drift caused by instruction execution delays.<br><br>The <strong>countdown timer mode</strong> allows the user to set a target duration using input buttons, after which the system counts down to zero and triggers an alert — typically a buzzer or LED indicator — upon completion. This makes it suitable for practical applications such as kitchen timers, lab experiment timing, or process control.<br><br>A later version extended the design with <strong>Wi-Fi connectivity</strong>, replacing the RTC module with an <strong>NTP (Network Time Protocol)</strong> client that automatically synchronises the current time from the internet on startup. This eliminated the need for manual time setting and ensured the clock always displayed accurate time regardless of power interruptions — a significant improvement in usability for always-connected environments.<br><br>Mode switching between clock, stopwatch, and timer is handled through dedicated push buttons, with the current mode and relevant values always reflected on the display. Across all versions, the design emphasises <strong>interrupt-driven architecture, debounced button handling, and efficient display interfacing</strong> — making it a comprehensive and progressively refined exercise in real-time embedded systems design.<br><br><div id=\"img-gallery\"></div>",
+	  "galleryImages":[
+	  ]
+    },
+	{//DONE
+	  "code":"xfr",
+      "title": "Single Phase 150 VA transformer",
+      "link": "http://shahadatparvez.com/projects#xfr",
+      "description": "",
+      "encoded": "This was a <strong>machine lab project</strong> undertaken as part of the electrical machines curriculum. The transformer was designed and physically wound from scratch — carefully calculating the number of turns for both primary and secondary windings based on the desired voltage ratio and the <strong>150 VA power rating</strong>. Laminated copper wires were hand-wound around a laminated silicon steel core to minimise eddy current losses and improve magnetic efficiency. The completed transformer was then tested to verify its voltage transformation ratio, regulation, and power handling under load — providing hands-on insight into the practical realities of transformer construction that theory alone cannot convey.<br><br><div id=\"img-gallery\"></div>",
+	  "galleryImages":[
+	  ]
+    },
+	{//DONE
+	  "code":"inductive-load",
+      "title": "Construction of a three-phase inductive load",
+      "link": "http://shahadatparvez.com/projects#inductive-load",
+      "description": "",
+      "encoded": "This lab project involved the physical construction of a <strong>three-phase inductive load bank</strong> for use in electrical machines and power systems experiments. The load was assembled using <strong>solenoids of known resistance and inductive reactance</strong>, allowing the load impedance to be precisely characterised. Both <strong>Wye (Star) and Delta connection configurations</strong> were incorporated into the design, with switching provision to alternate between the two — enabling experiments that compare the behaviour of three-phase systems under different load topologies. This made the unit a versatile and reusable piece of lab equipment for studying power factor, line and phase voltage relationships, and three-phase power calculations.<br><br><div id=\"img-gallery\"></div>",
+	  "galleryImages":[
+	  ]
+    },
+	{//DONE
+	  "code":"garments-floor-plan",
+      "title": "Designing of electrical service system of a garments floor",
+      "link": "http://shahadatparvez.com/projects#garments-floor-plan",
+      "description": "",
+      "encoded": "This was a <strong>group project</strong> completed as partial fulfilment of the <strong>Electrical Service Design Lab</strong>. The task involved designing a complete <strong>electrical service system for a garments factory floor</strong> — a demanding environment with high power density, motor-driven machinery, lighting requirements, and strict safety considerations. Working from architectural drawings of the floor layout, the design covered load estimation, circuit distribution, cable sizing, switchgear selection, and placement of DB (distribution board) panels. Particular attention was given to <strong>industrial wiring standards, motor protection, and energy efficiency</strong> — reflecting the practical demands of a real garments manufacturing environment where reliable power supply is critical to production continuity.<br><br><div id=\"img-gallery\"></div>",
+	  "galleryImages":[
+	  ]
     }
+
+
 
 	
   ];

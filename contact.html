@@ -2,145 +2,218 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contact</title>
-<meta name="description" content="Send a message about an app, a bug, or a suggestion.">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Contact | Shahadat Hussain Parvez</title>
+<meta name="description" content="Send a message about one of my apps, a bug, or a suggestion.">
+<meta property="og:title" content="Contact | Shahadat Hussain Parvez">
+<meta property="og:site_name" content="SHP's Portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Saira+Extra+Condensed:wght@500;700&display=swap" rel="stylesheet">
 <style>
+/* ── Theme: if a colour or font differs from your site, change it here ── */
 :root {
-  --bg: #f3f4f7;
-  --panel: #ffffff;
-  --ink: #151821;
-  --muted: #5b6275;
-  --line: #d6d9e2;
-  --accent: #2b4bd6;
-  --accent-ink: #ffffff;
+  --primary: #bd5d38;          /* sidebar + accents */
+  --heading: #343a40;          /* headings */
+  --text: #6c757d;             /* body text */
+  --line: #ced4da;             /* borders */
   --danger: #b3261e;
   --ok: #1d6b3a;
-  color-scheme: light dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111319;
-    --panel: #1a1d26;
-    --ink: #eceef5;
-    --muted: #9aa1b5;
-    --line: #333849;
-    --accent: #8ea2ff;
-    --accent-ink: #10131c;
-    --danger: #ff8a80;
-    --ok: #7fd6a0;
-  }
+  --font-heading: "Saira Extra Condensed", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Mulish", "Muli", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sidebar: 17rem;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  display: grid;
-  place-items: start center;
-  padding: clamp(20px, 6vw, 72px) 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: #fff;
+  padding-top: 56px;
 }
-main { width: 100%; max-width: 560px; }
-h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.15; margin: 0 0 .5rem; letter-spacing: -.02em; }
-.lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 46ch; }
+a { color: var(--primary); }
+a:hover { color: #7c3a20; }
+
+/* ── Sidebar / top bar ── */
+#sideNav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1030;
+  background: var(--primary);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  padding: .5rem 1rem; min-height: 56px;
+}
+.brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: .05rem; text-transform: uppercase; display: flex; align-items: center; }
+.brand:hover { color: #fff; }
+.brand .full { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+.brand .photo { display: none; }
+.toggler {
+  background: none; border: 1px solid rgba(255,255,255,.5); color: #fff; border-radius: .25rem;
+  padding: .3rem .6rem; font: inherit; cursor: pointer;
+}
+.toggler:focus-visible, .nav-link:focus-visible, .brand:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+#navMenu { display: none; width: 100%; padding-top: .5rem; }
+#navMenu.open { display: block; }
+.nav-list { list-style: none; margin: 0; padding: 0; }
+.nav-link {
+  display: block; padding: .5rem 0;
+  color: rgba(255,255,255,.75); text-decoration: none;
+  font-weight: 800; letter-spacing: .05rem; text-transform: uppercase; font-size: .9rem;
+}
+.nav-link:hover, .nav-link.active { color: #fff; }
+
+@media (min-width: 992px) {
+  body { padding-top: 0; padding-left: var(--sidebar); }
+  #sideNav {
+    right: auto; bottom: 0; width: var(--sidebar);
+    flex-direction: column; align-items: stretch; justify-content: flex-start;
+    padding: 0; overflow-y: auto;
+  }
+  .brand { flex-direction: column; justify-content: center; margin: 2rem auto 1rem; text-align: center; }
+  .brand .full { display: none; }
+  .brand .photo {
+    display: block; width: 10rem; height: 10rem; border-radius: 50%; object-fit: cover;
+    border: .5rem solid rgba(255,255,255,.2); background: rgba(255,255,255,.15);
+  }
+  .toggler { display: none; }
+  #navMenu { display: block; padding: 0 0 2rem 0; }
+  .nav-link { padding: .5rem 1.5rem; }
+}
+
+/* ── Content ── */
+section.block {
+  display: flex; align-items: center;
+  min-height: calc(100vh - 56px);
+  padding: 3rem 1rem;
+}
+@media (min-width: 768px) { section.block { padding: 5rem 3rem; } }
+@media (min-width: 992px) { section.block { min-height: 100vh; } }
+.inner { width: 100%; max-width: 44rem; }
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700; text-transform: uppercase;
+  font-size: clamp(2.8rem, 8vw, 4.5rem); line-height: 1; letter-spacing: .02em;
+  color: var(--heading); margin: 0 0 .5rem;
+}
+h1 .accent { color: var(--primary); }
+.lede { margin: 0 0 2rem; max-width: 40rem; }
+
 form, .done {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: clamp(18px, 4vw, 28px);
+  border-top: 1px solid var(--line);
+  padding-top: 2rem;
 }
-.field { margin-bottom: 1.15rem; }
-label { display: block; font-weight: 600; margin-bottom: .35rem; }
-.hint { font-weight: 400; color: var(--muted); }
+.field { margin-bottom: 1.25rem; }
+label {
+  display: block; margin-bottom: .35rem;
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;
+  letter-spacing: .05rem; text-transform: uppercase; color: var(--heading);
+}
+.hint { font-family: var(--font-body); font-weight: 400; font-size: .9rem; text-transform: none; letter-spacing: 0; color: var(--text); }
 input, select, textarea {
-  width: 100%;
-  font: inherit;
-  color: var(--ink);
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: .65rem .75rem;
+  width: 100%; font: inherit; color: var(--heading); background: #fff;
+  border: 1px solid var(--line); border-radius: .25rem; padding: .6rem .75rem;
 }
-textarea { min-height: 150px; resize: vertical; }
-input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
+textarea { min-height: 9.5rem; resize: vertical; }
+input:focus, select:focus, textarea:focus {
+  outline: 0; border-color: var(--primary); box-shadow: 0 0 0 .2rem rgba(189,93,56,.25);
 }
 [aria-invalid="true"] { border-color: var(--danger); }
 .err { color: var(--danger); margin: .35rem 0 0; font-size: .92rem; }
-.banner { border-left: 4px solid var(--danger); padding: .6rem .9rem; margin-bottom: 1.15rem; background: var(--bg); color: var(--danger); }
-.banner[hidden], .done[hidden], form[hidden] { display: none; }
-button {
-  font: inherit;
-  font-weight: 600;
-  background: var(--accent);
-  color: var(--accent-ink);
-  border: 0;
-  border-radius: 6px;
-  padding: .75rem 1.4rem;
-  cursor: pointer;
+.banner { border-left: 4px solid var(--danger); padding: .6rem .9rem; margin-bottom: 1.25rem; background: #fdf3f2; color: var(--danger); }
+.banner[hidden], .done[hidden], form[hidden], .err[hidden] { display: none; }
+button.send {
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem;
+  letter-spacing: .08rem; text-transform: uppercase;
+  background: var(--primary); color: #fff; border: 1px solid var(--primary);
+  border-radius: .25rem; padding: .5rem 1.75rem; cursor: pointer;
 }
-button:hover { filter: brightness(1.08); }
-button:disabled { opacity: .6; cursor: progress; }
-.note { color: var(--muted); font-size: .88rem; margin: 1rem 0 0; }
-.note a { color: inherit; }
+button.send:hover { background: #a24e2e; border-color: #a24e2e; }
+button.send:focus-visible { outline: 3px solid var(--heading); outline-offset: 2px; }
+button.send:disabled { opacity: .65; cursor: progress; }
+.note { font-size: .88rem; margin: 1rem 0 0; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.done h2 { margin: 0 0 .4rem; color: var(--ok); font-size: 1.25rem; }
+.done h2 { font-family: var(--font-heading); text-transform: uppercase; font-size: 2.2rem; color: var(--ok); margin: 0 0 .4rem; }
 .done p { margin: 0 0 1rem; }
-.done a { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
 </head>
-<body>
-<main>
-  <h1>Contact</h1>
-  <p class="lede">Questions, bug reports, or ideas for one of my apps? Send a message and I'll reply by email.</p>
+<body id="page-top">
 
-  <form id="form" novalidate>
-    <div class="banner" id="banner" role="alert" hidden></div>
-
-    <div class="field">
-      <label for="app">What is this about?</label>
-      <select id="app" name="app"></select>
-      <p class="err" id="err-app" hidden></p>
-    </div>
-
-    <div class="field">
-      <label for="name">Your name</label>
-      <input id="name" name="name" type="text" maxlength="100" autocomplete="name" required>
-      <p class="err" id="err-name" hidden></p>
-    </div>
-
-    <div class="field">
-      <label for="email">Your email <span class="hint">(for my reply)</span></label>
-      <input id="email" name="email" type="email" maxlength="150" autocomplete="email" required>
-      <p class="err" id="err-email" hidden></p>
-    </div>
-
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" maxlength="5000" required></textarea>
-      <p class="err" id="err-message" hidden></p>
-    </div>
-
-    <!-- Honeypot: real visitors never see or tick this. -->
-    <div class="hp" aria-hidden="true">
-      <label for="botcheck">Leave this box empty</label>
-      <input id="botcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off">
-    </div>
-
-    <button type="submit" id="send">Send message</button>
-    <p class="note">Your name, email and message are used only to reply to you. Messages are delivered to me by the form service <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>.</p>
-    <noscript><p class="err">This form needs JavaScript. Please enable it and reload the page.</p></noscript>
-  </form>
-
-  <div class="done" id="done" role="status" hidden>
-    <h2>Message sent</h2>
-    <p>Thanks. I'll reply to the email address you gave.</p>
-    <p><a href="#" id="again">Send another message</a></p>
+<nav id="sideNav" aria-label="Main">
+  <a class="brand" href="https://shahadatparvez.com/#page-top">
+    <span class="full">Shahadat Hussain Parvez</span>
+    <img class="photo" src="https://shahadatparvez.com/shpnew/img/profile_480.jpg" alt="Shahadat Hussain Parvez">
+  </a>
+  <button class="toggler" id="toggler" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+  <div id="navMenu">
+    <ul class="nav-list">
+      <li><a class="nav-link" href="https://shahadatparvez.com/#about">About</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#experience">Experience</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#education">Education</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#skills">Skills</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#interests">Interests</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#publications">Publications</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#projects">Projects</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#certificates">Certificates</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/#websites">Websites</a></li>
+      <li><a class="nav-link active" href="#page-top" aria-current="page">Contact</a></li>
+      <li><a class="nav-link" href="https://shahadatparvez.com/gallery.html">My Perspective</a></li>
+    </ul>
   </div>
+</nav>
+
+<main class="container">
+  <section class="block" id="contact">
+    <div class="inner">
+      <h1>Get in <span class="accent">touch</span></h1>
+      <p class="lede">Questions, bug reports, or ideas for one of my apps? Send a message and I'll reply by email.</p>
+
+      <form id="form" novalidate>
+        <div class="banner" id="banner" role="alert" hidden></div>
+
+        <div class="field">
+          <label for="app">What is this about?</label>
+          <select id="app" name="app"></select>
+          <p class="err" id="err-app" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" maxlength="100" autocomplete="name" required>
+          <p class="err" id="err-name" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Your email <span class="hint">(for my reply)</span></label>
+          <input id="email" name="email" type="email" maxlength="150" autocomplete="email" required>
+          <p class="err" id="err-email" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" maxlength="5000" required></textarea>
+          <p class="err" id="err-message" hidden></p>
+        </div>
+
+        <!-- Honeypot: real visitors never see or tick this. -->
+        <div class="hp" aria-hidden="true">
+          <label for="botcheck">Leave this box empty</label>
+          <input id="botcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="send" type="submit" id="send">Send message</button>
+        <p class="note">Your name, email and message are used only to reply to you. Messages are delivered to me by the form service <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>.</p>
+        <noscript><p class="err">This form needs JavaScript. Please enable it and reload the page.</p></noscript>
+      </form>
+
+      <div class="done" id="done" role="status" hidden>
+        <h2>Message sent</h2>
+        <p>Thanks. I'll reply to the email address you gave.</p>
+        <p><a href="#" id="again">Send another message</a></p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <script>
@@ -172,6 +245,13 @@ const FROM_NAME = 'Website contact form';
   const $ = (id) => document.getElementById(id);
   const form = $('form'), done = $('done'), banner = $('banner'), sendBtn = $('send');
   const opened = Date.now();
+
+  // Mobile menu
+  const toggler = $('toggler'), menu = $('navMenu');
+  toggler.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggler.setAttribute('aria-expanded', String(open));
+  });
 
   // Fill the dropdown and pre-select the app from the link (?app=wordlens).
   const keys = Object.keys(APPS);

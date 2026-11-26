@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact</title>
+<meta name="description" content="Send a message about an app, a bug, or a suggestion.">
+<style>
+:root {
+  --bg: #f3f4f7;
+  --panel: #ffffff;
+  --ink: #151821;
+  --muted: #5b6275;
+  --line: #d6d9e2;
+  --accent: #2b4bd6;
+  --accent-ink: #ffffff;
+  --danger: #b3261e;
+  --ok: #1d6b3a;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111319;
+    --panel: #1a1d26;
+    --ink: #eceef5;
+    --muted: #9aa1b5;
+    --line: #333849;
+    --accent: #8ea2ff;
+    --accent-ink: #10131c;
+    --danger: #ff8a80;
+    --ok: #7fd6a0;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: grid;
+  place-items: start center;
+  padding: clamp(20px, 6vw, 72px) 16px;
+}
+main { width: 100%; max-width: 560px; }
+h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.15; margin: 0 0 .5rem; letter-spacing: -.02em; }
+.lede { color: var(--muted); margin: 0 0 1.75rem; max-width: 46ch; }
+form, .done {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: clamp(18px, 4vw, 28px);
+}
+.field { margin-bottom: 1.15rem; }
+label { display: block; font-weight: 600; margin-bottom: .35rem; }
+.hint { font-weight: 400; color: var(--muted); }
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: .65rem .75rem;
+}
+textarea { min-height: 150px; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+[aria-invalid="true"] { border-color: var(--danger); }
+.err { color: var(--danger); margin: .35rem 0 0; font-size: .92rem; }
+.banner { border-left: 4px solid var(--danger); padding: .6rem .9rem; margin-bottom: 1.15rem; background: var(--bg); color: var(--danger); }
+.banner[hidden], .done[hidden], form[hidden] { display: none; }
+button {
+  font: inherit;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: 6px;
+  padding: .75rem 1.4rem;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.08); }
+button:disabled { opacity: .6; cursor: progress; }
+.note { color: var(--muted); font-size: .88rem; margin: 1rem 0 0; }
+.note a { color: inherit; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.done h2 { margin: 0 0 .4rem; color: var(--ok); font-size: 1.25rem; }
+.done p { margin: 0 0 1rem; }
+.done a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Contact</h1>
+  <p class="lede">Questions, bug reports, or ideas for one of my apps? Send a message and I'll reply by email.</p>
+
+  <form id="form" novalidate>
+    <div class="banner" id="banner" role="alert" hidden></div>
+
+    <div class="field">
+      <label for="app">What is this about?</label>
+      <select id="app" name="app"></select>
+      <p class="err" id="err-app" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" maxlength="100" autocomplete="name" required>
+      <p class="err" id="err-name" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="email">Your email <span class="hint">(for my reply)</span></label>
+      <input id="email" name="email" type="email" maxlength="150" autocomplete="email" required>
+      <p class="err" id="err-email" hidden></p>
+    </div>
+
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" maxlength="5000" required></textarea>
+      <p class="err" id="err-message" hidden></p>
+    </div>
+
+    <!-- Honeypot: real visitors never see or tick this. -->
+    <div class="hp" aria-hidden="true">
+      <label for="botcheck">Leave this box empty</label>
+      <input id="botcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off">
+    </div>
+
+    <button type="submit" id="send">Send message</button>
+    <p class="note">Your name, email and message are used only to reply to you. Messages are delivered to me by the form service <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>.</p>
+    <noscript><p class="err">This form needs JavaScript. Please enable it and reload the page.</p></noscript>
+  </form>
+
+  <div class="done" id="done" role="status" hidden>
+    <h2>Message sent</h2>
+    <p>Thanks. I'll reply to the email address you gave.</p>
+    <p><a href="#" id="again">Send another message</a></p>
+  </div>
+</main>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONFIG: edit these, then publish the file with the rest of your site.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+// 1. Get a free access key at https://web3forms.com (enter the email where you
+//    want messages delivered; the key is emailed to you). It is safe to keep in
+//    public code: it can only send messages to YOUR inbox.
+const ACCESS_KEY = 'PASTE-YOUR-WEB3FORMS-ACCESS-KEY-HERE';
+
+// 2. Apps people can contact you about. key => label shown in the dropdown.
+//    Link to a specific app with:  contact.html?app=wordlens
+const APPS = {
+  wordlens: 'WordLens (Edge extension)',
+  other:    'Something else'
+};
+
+// 3. Name shown as the sender in the notification email.
+const FROM_NAME = 'Website contact form';
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Logic: no need to edit below this line.
+   ═══════════════════════════════════════════════════════════════════════════ */
+(() => {
+  'use strict';
+
+  const $ = (id) => document.getElementById(id);
+  const form = $('form'), done = $('done'), banner = $('banner'), sendBtn = $('send');
+  const opened = Date.now();
+
+  // Fill the dropdown and pre-select the app from the link (?app=wordlens).
+  const keys = Object.keys(APPS);
+  keys.forEach((k) => {
+    const o = document.createElement('option');
+    o.value = k; o.textContent = APPS[k];
+    $('app').appendChild(o);
+  });
+  const wanted = (new URLSearchParams(location.search).get('app') || '').toLowerCase();
+  $('app').value = keys.includes(wanted) ? wanted : keys[0];
+
+  function setError(field, msg) {
+    const el = $('err-' + field), input = $(field);
+    if (msg) { el.textContent = msg; el.hidden = false; input.setAttribute('aria-invalid', 'true'); input.setAttribute('aria-describedby', 'err-' + field); }
+    else { el.hidden = true; input.removeAttribute('aria-invalid'); input.removeAttribute('aria-describedby'); }
+  }
+
+  function validate() {
+    const name = $('name').value.trim();
+    const email = $('email').value.trim();
+    const message = $('message').value.trim();
+    const errs = {};
+    if (!name || name.length > 100) errs.name = 'Enter your name (up to 100 characters).';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Enter a valid email address so I can reply.';
+    if (!keys.includes($('app').value)) errs.app = 'Choose what your message is about.';
+    if (message.length < 10 || message.length > 5000) errs.message = 'Write between 10 and 5,000 characters.';
+    ['app', 'name', 'email', 'message'].forEach((f) => setError(f, errs[f]));
+    return Object.keys(errs).length === 0;
+  }
+
+  function showBanner(msg) { banner.textContent = msg; banner.hidden = !msg; }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showBanner('');
+    if (!validate()) { const first = form.querySelector('[aria-invalid="true"]'); if (first) first.focus(); return; }
+
+    if ($('botcheck').checked) return;                       // bots tick the hidden box
+    if (Date.now() - opened < 3000) { showBanner('That was too fast. Wait a moment and send again.'); return; }
+    if (ACCESS_KEY.startsWith('PASTE-')) { showBanner('This form is not set up yet: the access key is missing.'); return; }
+
+    const appLabel = APPS[$('app').value];
+    const payload = {
+      access_key: ACCESS_KEY,
+      subject: '[' + appLabel + '] Message from ' + $('name').value.trim(),
+      from_name: FROM_NAME,
+      name: $('name').value.trim(),
+      email: $('email').value.trim(),      // Web3Forms uses this as the reply-to address
+      app: appLabel,
+      message: $('message').value.trim(),
+      botcheck: ''
+    };
+
+    sendBtn.disabled = true; sendBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        form.hidden = true; done.hidden = false; done.querySelector('a').focus();
+        form.reset(); $('app').value = keys.includes(wanted) ? wanted : keys[0];
+      } else {
+        showBanner((data && data.message) ? 'The message could not be sent: ' + data.message : 'The message could not be sent. Please try again later.');
+      }
+    } catch (err) {
+      showBanner('Could not reach the form service. Check your connection and try again.');
+    } finally {
+      sendBtn.disabled = false; sendBtn.textContent = 'Send message';
+    }
+  });
+
+  $('again').addEventListener('click', (e) => { e.preventDefault(); done.hidden = true; form.hidden = false; $('name').focus(); });
+})();
+</script>
+</body>
+</html>

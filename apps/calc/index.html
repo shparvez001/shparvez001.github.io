@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1e1e1c" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Scientific calculator with complex numbers and base conversion. Works offline.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SciCalc">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cw">
+    <div class="tabs">
+      <button class="tab active" data-tab="sci">Scientific</button>
+      <button class="tab" data-tab="cplx">Complex</button>
+      <button class="tab" data-tab="base">Base conv.</button>
+    </div>
+
+    <!-- Scientific Pane -->
+    <div id="pane-sci" class="pane active">
+      <div class="disp">
+        <div class="expr" id="expr"></div>
+        <div class="res" id="result">0</div>
+      </div>
+      <div class="mode-row">
+        <button class="mb active" id="deg-btn" data-mode="deg">DEG</button>
+        <button class="mb" id="rad-btn" data-mode="rad">RAD</button>
+        <button class="mb" id="inv-btn">INV</button>
+        <button class="mb" id="hyp-btn">HYP</button>
+      </div>
+      <div class="grid g5" id="btn-grid"></div>
+    </div>
+
+    <!-- Complex Pane -->
+    <div id="pane-cplx" class="pane">
+      <div class="disp" style="text-align:left">
+        <div class="expr" style="font-size:11px">enter a+bi for each operand</div>
+        <div class="res" id="cplx-disp" style="font-size:18px">—</div>
+      </div>
+      <div class="section">
+        <div class="row">
+          <span class="label" style="margin:0;min-width:18px">A</span>
+          <input class="inp" id="ca" placeholder="e.g. 3+2i">
+        </div>
+        <div id="cplx-op-row" style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:8px">
+          <button class="btn op" data-cplx-op="+">+</button>
+          <button class="btn op" data-cplx-op="-">−</button>
+          <button class="btn op" data-cplx-op="*">×</button>
+          <button class="btn op" data-cplx-op="/">÷</button>
+          <button class="btn fn" data-cplx-op="pow">zⁿ</button>
+        </div>
+        <div class="row">
+          <span class="label" style="margin:0;min-width:18px">B</span>
+          <input class="inp" id="cb" placeholder="e.g. 1-4i">
+        </div>
+      </div>
+      <div id="cplx-unary-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px">
+        <button class="btn fn" data-cplx-unary="conj">conj</button>
+        <button class="btn fn" data-cplx-unary="abs">|z|</button>
+        <button class="btn fn" data-cplx-unary="arg">arg(z)</button>
+        <button class="btn fn" data-cplx-unary="sqrt">√z</button>
+        <button class="btn fn" data-cplx-unary="sq">z²</button>
+        <button class="btn fn" data-cplx-unary="inv">1/z</button>
+        <button class="btn fn" data-cplx-unary="exp">eᶻ</button>
+        <button class="btn fn" data-cplx-unary="ln">ln(z)</button>
+        <button class="btn fn" data-cplx-unary="sin">sin(z)</button>
+        <button class="btn fn" data-cplx-unary="cos">cos(z)</button>
+        <button class="btn fn" data-cplx-unary="tan">tan(z)</button>
+        <button class="btn clr" id="cplx-clear">AC</button>
+      </div>
+      <div class="cplx-result" id="cplx-result" style="display:none"></div>
+    </div>
+
+    <!-- Base Conversion Pane -->
+    <div id="pane-base" class="pane">
+      <div class="disp" style="text-align:left;min-height:60px">
+        <div class="expr" style="font-size:11px">type a number, select its base</div>
+        <div class="res" id="base-disp" style="font-size:20px">—</div>
+      </div>
+      <div class="row" style="margin-bottom:12px">
+        <input class="inp" id="base-input" placeholder="enter value">
+        <select id="from-base">
+          <option value="10">Dec (10)</option>
+          <option value="2">Bin (2)</option>
+          <option value="8">Oct (8)</option>
+          <option value="16">Hex (16)</option>
+        </select>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:6px" id="hex-pad"></div>
+      <div class="grid g4" id="base-numpad"></div>
+      <div class="conv-result" id="base-result" style="display:none"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

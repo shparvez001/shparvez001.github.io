@@ -1,0 +1,17 @@
+{
+  "name": "Scientific Calculator",
+  "short_name": "SciCalc",
+  "description": "Scientific calculator with complex numbers and base conversion. Works offline.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1e1e1c",
+  "theme_color": "#1e1e1c",
+  "categories": ["utilities", "productivity", "education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

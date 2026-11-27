@@ -22,7 +22,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #1e1e1c;
     --bg2: #2a2a28;
     --bg3: #333331;
@@ -40,6 +40,26 @@
     --border3: rgba(255,255,255,0.30);
   }
 }
+:root[data-theme="dark"] {
+    --bg: #1e1e1c;
+    --bg2: #2a2a28;
+    --bg3: #333331;
+    --bg-info: #042c53;
+    --bg-warn: #412402;
+    --bg-danger: #501313;
+    --text: #f0efe8;
+    --text2: #a8a8a2;
+    --text3: #6b6b67;
+    --text-info: #85b7eb;
+    --text-warn: #fac775;
+    --text-danger: #f09595;
+    --border: rgba(255,255,255,0.10);
+    --border2: rgba(255,255,255,0.18);
+    --border3: rgba(255,255,255,0.30);
+  }
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+
 
 body {
   width: 420px;
@@ -259,13 +279,36 @@ button { touch-action: manipulation; -webkit-user-select: none; user-select: non
 .inp, select { font-size: 16px; }
 .res { font-size: 34px; }
 .disp { min-height: 88px; }
-@media (pointer: coarse) {
-  .btn { height: 56px; font-size: 13px; }
-  .btn.num { font-size: 17px; }
-  .mb { padding: 9px 0; font-size: 12px; }
-  .tab { padding: 11px 0; font-size: 13px; }
-}
+
+/* ═══ Larger button text ═══ */
+.btn      { height: 58px; font-size: 17px; }
+.btn.fn   { font-size: 16px; }
+.btn.num  { font-size: 25px; }
+.btn.op   { font-size: 22px; }
+.btn.clr  { font-size: 19px; }
+.btn.eq   { font-size: 26px; }
+.btn.long { font-size: 12.5px; }          /* arcsin, arccos, arcsinh … */
+.mb       { padding: 10px 0; font-size: 14px; }
+.tab      { padding: 12px 0; font-size: 14px; }
+.cplx-row, .conv-row { font-size: 14px; }
 @media (max-width: 360px) {
-  .btn { height: 50px; font-size: 11px; }
+  .btn { height: 52px; font-size: 15px; }
+  .btn.fn { font-size: 14px; }
+  .btn.num { font-size: 22px; }
+  .btn.long { font-size: 11px; }
   .g5 { gap: 4px; }
 }
+
+/* ═══ Theme toggle ═══ */
+.topbar { display: flex; gap: 8px; margin-bottom: 12px; }
+.topbar .tabs { flex: 1; margin-bottom: 0; }
+.theme-btn {
+  width: 46px; flex: 0 0 46px;
+  font-size: 20px; line-height: 1;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg2);
+  color: var(--text);
+  cursor: pointer;
+}
+.theme-btn:active { background: var(--bg3); }

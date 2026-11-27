@@ -205,6 +205,7 @@ function buildButtons() {
     const btn = document.createElement('button');
     btn.className = 'btn ' + b.c;
     btn.textContent = b.l;
+    if (b.l.length > 5) btn.classList.add('long');
     btn.addEventListener('click', () => handleBtn(b.v));
     grid.appendChild(btn);
   });
@@ -481,6 +482,28 @@ document.getElementById('from-base').addEventListener('change', () => { updateHe
 buildButtons();
 buildBasePad();
 
+
+/* ── Theme toggle ── */
+(function () {
+  const root = document.documentElement;
+  const btn  = document.getElementById('theme-btn');
+  const meta = document.getElementById('theme-color');
+  const mq   = window.matchMedia('(prefers-color-scheme: dark)');
+  const isDark = () => root.getAttribute('data-theme')
+    ? root.getAttribute('data-theme') === 'dark' : mq.matches;
+  function paint() {
+    btn.textContent = isDark() ? '☀' : '☾';
+    if (meta) meta.setAttribute('content', isDark() ? '#1e1e1c' : '#ffffff');
+  }
+  btn.addEventListener('click', () => {
+    const next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    paint();
+  });
+  mq.addEventListener('change', paint);
+  paint();
+})();
 
 /* ── PWA: service worker ── */
 if ('serviceWorker' in navigator) {
